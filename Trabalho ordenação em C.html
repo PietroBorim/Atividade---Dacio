@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+<meta charset="UTF-8">
+<title>Selection Sort em C</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    background:#f4f4f4;
+    margin:0;
+}
+
+header{
+    background:#333;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+nav{
+    background:#555;
+}
+
+nav ul{
+    list-style:none;
+    margin:0;
+    padding:10px;
+    display:flex;
+    justify-content:center;
+}
+
+nav ul li{
+    margin:0 15px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+}
+
+section{
+    background:white;
+    margin:20px;
+    padding:20px;
+    border-radius:5px;
+}
+
+pre{
+    background:#eee;
+    padding:10px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table, th, td{
+    border:1px solid #ccc;
+}
+
+th, td{
+    padding:10px;
+    text-align:center;
+}
+
+footer{
+    background:#333;
+    color:white;
+    text-align:center;
+    padding:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>Selection Sort em C</h1>
+<p>Método de ordenação simples usado em algoritmos</p>
+</header>
+
+<nav>
+<ul>
+<li><a href="#sobre">Sobre</a></li>
+<li><a href="#funciona">Como funciona</a></li>
+<li><a href="#codigo">Código em C</a></li>
+<li><a href="#exemplo">Exemplo</a></li>
+</ul>
+</nav>
+
+<section id="sobre">
+
+<h2>O que é Selection Sort?</h2>
+
+<p>
+O Selection Sort (ordenação por seleção) é um algoritmo simples de ordenação.
+Ele funciona encontrando o menor valor de uma lista e colocando ele na posição correta.
+</p>
+
+<p>
+Esse processo é repetido até que todos os elementos estejam organizados.
+</p>
+
+</section>
+
+
+<section id="funciona">
+
+<h2>Como o algoritmo funciona</h2>
+
+<ol>
+<li>O algoritmo procura o menor número da lista.</li>
+<li>Troca esse número com o primeiro elemento.</li>
+<li>Depois procura o menor número do restante da lista.</li>
+<li>Repete o processo até ordenar tudo.</li>
+</ol>
+
+</section>
+
+
+<section id="codigo">
+
+<h2>Código do Selection Sort em C</h2>
+
+<pre>
+
+#include &lt;stdio.h&gt;
+
+void selectionSort(int v[], int n){
+
+    int i, j, menor, temp;
+
+    for(i = 0; i < n-1; i++){
+
+        menor = i;
+
+        for(j = i+1; j < n; j++){
+
+            if(v[j] < v[menor]){
+                menor = j;
+            }
+
+        }
+
+        temp = v[i];
+        v[i] = v[menor];
+        v[menor] = temp;
+    }
+
+}
+
+int main(){
+
+    int v[5] = {5,3,8,1,2};
+    int i;
+
+    selectionSort(v,5);
+
+    printf("Vetor ordenado:\\n");
+
+    for(i=0;i<5;i++){
+        printf("%d ", v[i]);
+    }
+
+}
+
+</pre>
+
+</section>
+
+
+<section id="exemplo">
+
+<h2>Exemplo de Ordenação</h2>
+
+<p>Vetor inicial:</p>
+
+<p>5, 3, 8, 1, 2</p>
+
+<p>Depois do Selection Sort:</p>
+
+<p>1, 2, 3, 5, 8</p>
+
+</section>
+
+
+<section>
+
+<h2>Complexidade do Algoritmo</h2>
+
+<table>
+
+<tr>
+<th>Tipo</th>
+<th>Complexidade</th>
+</tr>
+
+<tr>
+<td>Melhor caso</td>
+<td>O(n²)</td>
+</tr>
+
+<tr>
+<td>Caso médio</td>
+<td>O(n²)</td>
+</tr>
+
+<tr>
+<td>Pior caso</td>
+<td>O(n²)</td>
+</tr>
+
+</table>
+
+</section>
+
+<footer>
+
+<p>Trabalho de Estrutura de Dados</p>
+<p>Algoritmo Selection Sort em C</p>
+
+</footer>
+
+</body>
+</html>
