@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Meu Pet Virtual</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                background-image: url(fundo.png);
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 40px;
+            }
+
+            #b {
+                width: 1000px;
+            }
+
+            #btn {
+                width: 500px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <img id="b" src="Normal.png"/>
+            <img id="btn" src="COMIDA.png " onclick="alimentar()"/>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
