@@ -1,0 +1,112 @@
+body {
+    background: #f4f7f6;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    color: #333;
+}
+
+header {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+header p {
+    font-size: 18px;
+}
+
+.secao {
+    background-color: white;
+    width: 90%;
+    margin: 25px auto;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #ddd;
+}
+
+.secao h2 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 26px;
+}
+
+.container-cards {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.grupo-card,
+.jogador-card {
+    background-color: #e8f4fd;
+    width: 280px;
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid #3498db;
+}
+
+.grupo-card h3,
+.jogador-card h3 {
+    color: #2c3e50;
+    text-align: center;
+}
+
+ul {
+    text-align: left;
+}
+
+details {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+summary {
+    font-weight: bold;
+    cursor: pointer;
+    color: #3498db;
+}
+
+button {
+    display: block;
+    margin: 25px auto 0;
+    background-color: #2c3e50;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3498db;
+}
+
+.tabela {
+    display: block;
+    width: 90%;
+    max-width: 900px;
+    margin: 20px auto;
+    border-radius: 12px;
+}
+
+.jogador-card img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}

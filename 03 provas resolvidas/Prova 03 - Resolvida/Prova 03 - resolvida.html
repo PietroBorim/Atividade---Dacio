@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Prova 03 - FrontEnd</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+
+<header>
+    <h1>Prova 03 - FrontEnd</h1>
+    <p>Copa do Mundo FIFA 2026</p>
+</header>
+
+<nav>
+    <a href="#organizacao">Organização</a>
+    <a href="#formato">Formato</a>
+    <a href="#impacto">Impacto</a>
+    <a href="#tabela">Tabela</a>
+    <a href="#jogador">Jogador</a>
+</nav>
+
+<section id="organizacao" class="secao">
+    <h2>🌍 Organização e Sedes</h2>
+    <p>
+        A Copa do Mundo FIFA de 2026 será a primeira edição realizada em três países:
+        Estados Unidos, Canadá e México. Essa será também a maior Copa da história
+        em número de cidades-sede.
+    </p>
+</section>
+
+<section id="formato" class="secao">
+    <h2>⚽ Novo Formato</h2>
+    <p>
+        O torneio contará com 48 seleções, em vez das tradicionais 32.
+        As equipes serão divididas em grupos, aumentando o número total de jogos.
+    </p>
+</section>
+
+<section id="impacto" class="secao">
+    <h2>🏆 Expectativas e Impacto</h2>
+    <p>
+        A edição de 2026 promete ser uma das mais assistidas da história,
+        com grande impacto econômico e cultural nos países-sede.
+    </p>
+</section>
+
+<section id="tabela" class="secao">
+    <h2>📋 Tabela de Jogos</h2>
+    <p>Clique no botão abaixo para mostrar a tabela oficial de jogos.</p>
+
+    <button onclick="mostrarTabela()">Mostrar Tabela de Jogos</button>
+
+    <div id="areaTabela"></div>
+</section>
+
+<section id="jogador" class="secao">
+    <h2>⭐ Perfil do Jogador</h2>
+
+    <div class="card-jogador">
+        <img id="fotoJogador" src="img_.svg" alt="Imagem do jogador">
+
+        <h3 id="nome">
+            <span class="placeholder">Nome do Jogador</span>
+        </h3>
+
+        <p><strong>Data de Nascimento:</strong> <span id="data" class="placeholder">---</span></p>
+        <p><strong>Altura:</strong> <span id="altura" class="placeholder">---</span></p>
+        <p><strong>Posição:</strong> <span id="posicao" class="placeholder">---</span></p>
+        <p><strong>Rank:</strong> <span id="rank" class="placeholder">---</span></p>
+
+        <button onclick="revelar()">Revelar</button>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 - DFMF System</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

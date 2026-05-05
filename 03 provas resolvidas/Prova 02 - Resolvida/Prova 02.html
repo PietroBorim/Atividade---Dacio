@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Prova 02 - FrontEnd</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+
+<header>
+    <h1>Prova 02 - FrontEnd</h1>
+    <p>Copa do Mundo FIFA 2026</p>
+</header>
+
+<main>
+
+    <section class="secao">
+        <h2>Grupos e Fatos</h2>
+
+        <div id="grupos" class="container-cards">
+
+            <div class="grupo-card">
+                <h3>🅰️ Grupo A</h3>
+                <h4>Seleções</h4>
+                <ul>
+                    <li>México</li>
+                    <li>África do Sul</li>
+                    <li>Coreia do Sul</li>
+                    <li>República Tcheca</li>
+                </ul>
+                <details>
+                    <summary>Saiba Mais</summary>
+                    <p>O jogo de abertura será México x África do Sul. Confrontos entre Coreia do Sul e seleções europeias já ocorreram em várias Copas.</p>
+                </details>
+            </div>
+
+            <div class="grupo-card">
+                <h3>🅱️ Grupo B</h3>
+                <h4>Seleções</h4>
+                <ul>
+                    <li>Canadá</li>
+                    <li>Suíça</li>
+                    <li>Catar</li>
+                    <li>Vaga Europeia (Bósnia)</li>
+                </ul>
+                <details>
+                    <summary>Saiba Mais</summary>
+                    <p>O Canadá joga em casa, fator importante de desempenho. Catar e Suíça já se enfrentaram em amistosos internacionais.</p>
+                </details>
+            </div>
+
+            <div class="grupo-card">
+                <h3>🅲 Grupo C</h3>
+                <h4>Seleções</h4>
+                <ul>
+                    <li>Brasil</li>
+                    <li>Marrocos</li>
+                    <li>Haiti</li>
+                    <li>Escócia</li>
+                </ul>
+                <details>
+                    <summary>Saiba Mais</summary>
+                    <p>Brasil, Marrocos e Escócia já dividiram grupo em 1998. Brasil nunca perdeu para a Escócia em Copas.</p>
+                </details>
+            </div>
+
+        </div>
+
+        <button onclick="proximo()">Próximo</button>
+    </section>
+
+    <section class="secao">
+        <h2>Tabela de Jogos</h2>
+        <img class="tabela" src="Tabela_Jogos.png" alt="Tabela de Jogos da Copa do Mundo">
+    </section>
+
+    <section class="secao">
+        <h2>Jogadores da Seleção</h2>
+
+        <div id="areaJogadores" class="container-cards">
+
+            <div class="jogador-card">
+                <img src="_vinicius_junior (1).png" alt="Vinícius Júnior">
+                <h3>Vinícius José Paixão de Oliveira Júnior</h3>
+                <p><strong>Data de Nascimento:</strong> 12/07/2000 (25 anos)</p>
+                <p><strong>Altura:</strong> 1,76 m</p>
+                <p><strong>Posição:</strong> Ponta-esquerda / Atacante</p>
+                <p><strong>Rank:</strong> 9,5</p>
+            </div>
+
+        </div>
+
+        <button onclick="add()">Adicionar Novo Jogador</button>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 - DFMF System</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+body {
+    background-color: #f4f7f6;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    color: #333;
+}
+
+header {
+    background: #2c3e50;
+    color: white;
+    padding: 25px;
+}
+
+header h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0;
+}
+
+header p {
+    font-size: 18px;
+}
+
+nav {
+    background-color: #3498db;
+    padding: 15px;
+}
+
+nav a {
+    color: white;
+    font-weight: bold;
+    margin: 15px;
+    text-decoration: none;
+}
+
+.secao {
+    background-color: white;
+    width: 85%;
+    margin: 25px auto;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+h2 {
+    font-size: 26px;
+    color: #2c3e50;
+}
+
+p {
+    font-size: 17px;
+}
+
+button {
+    background-color: #2c3e50;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3498db;
+}
+
+#areaTabela img {
+    width: 85%;
+    max-width: 1000px;
+    margin-top: 20px;
+    border-radius: 12px;
+}
+
+.card-jogador {
+    background-color: #e8f4fd;
+    width: 380px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 15px;
+    border: 2px solid #3498db;
+}
+
+.card-jogador img {
+    width: 250px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.card-text {
+    color: #333;
+    font-weight: normal;
+}
+
+.placeholder {
+    color: #888;
+    background-color: #ddd;
+    padding: 3px 8px;
+    border-radius: 6px;
+}
+
+footer {
+    background: #2c3e50;
+    color: white;
+    padding: 15px;
+}
