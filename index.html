@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="todo-app">
+        <h1>Lista de Tarefas</h1>
+        <p class="subtitulo">Organize suas atividades do dia.</p>
+
+        <div class="nova-tarefa">
+            <input
+                type="text"
+                id="taskInput"
+                placeholder="Digite uma nova tarefa"
+                maxlength="80"
+                autocomplete="off"
+            >
+            <button id="addButton" type="button">Adicionar</button>
+        </div>
+
+        <p id="mensagem" class="mensagem" aria-live="polite"></p>
+
+        <div class="resumo">
+            <span id="taskCounter">0 tarefas pendentes</span>
+            <button id="clearButton" class="botao-secundario" type="button">
+                Limpar concluídas
+            </button>
+        </div>
+
+        <ul id="taskList" aria-label="Lista de tarefas"></ul>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
