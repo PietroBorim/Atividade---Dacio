@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semana 11 - Jogo da Velha</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --fundo: #eef2f8;
+      --card: #ffffff;
+      --texto: #172033;
+      --secundario: #667085;
+      --primaria: #3457d5;
+      --primaria-escura: #2443b5;
+      --borda: #dfe5ef;
+      --x: #3457d5;
+      --o: #d64f45;
+      --sucesso: #137a4b;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #edf1ff, var(--fundo));
+      color: var(--texto);
+    }
+
+    button { font: inherit; }
+
+    .pagina {
+      width: min(980px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 42px 0;
+    }
+
+    .cabecalho { margin-bottom: 24px; }
+
+    .cabecalho span {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #e4eaff;
+      color: var(--primaria);
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .cabecalho h1 {
+      margin: 12px 0 8px;
+      font-size: 40px;
+    }
+
+    .cabecalho p {
+      margin: 0;
+      color: var(--secundario);
+    }
+
+    .conteudo {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--borda);
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: 0 12px 30px rgba(23, 32, 51, .08);
+    }
+
+    .status {
+      min-height: 32px;
+      margin-bottom: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .tabuleiro {
+      display: grid;
+      grid-template-columns: repeat(3, 112px);
+      justify-content: center;
+    }
+
+    .quadrado {
+      width: 112px;
+      height: 112px;
+      border: 1px solid #bbc4d4;
+      background: white;
+      font-size: 48px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .quadrado:hover:not(:disabled) { background: #f1f4ff; }
+    .quadrado:disabled { cursor: default; }
+    .quadrado.x { color: var(--x); }
+    .quadrado.o { color: var(--o); }
+
+    .quadrado.vencedor {
+      background: #eaf8f0;
+      color: var(--sucesso);
+    }
+
+    .acoes {
+      display: flex;
+      justify-content: center;
+      margin-top: 22px;
+    }
+
+    .botao {
+      border: 0;
+      border-radius: 9px;
+      padding: 11px 16px;
+      background: var(--primaria);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .botao:hover { background: var(--primaria-escura); }
+
+    .botao.secundario {
+      width: 100%;
+      background: #eef1f6;
+      color: var(--texto);
+    }
+
+    .lateral h2 { margin-top: 0; }
+
+    .placar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 18px 0 24px;
+    }
+
+    .placar div {
+      padding: 14px 8px;
+      border-radius: 12px;
+      background: #f7f8fb;
+      border: 1px solid var(--borda);
+      text-align: center;
+    }
+
+    .placar span {
+      display: block;
+      color: var(--secundario);
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .placar strong { font-size: 24px; }
+
+    .titulo-historico { margin-top: 26px !important; }
+
+    .historico {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .historico li { border-bottom: 1px solid var(--borda); }
+
+    .historico button {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: var(--texto);
+      text-align: left;
+      padding: 10px 4px;
+      cursor: pointer;
+    }
+
+    .historico button:hover,
+    .historico button.atual {
+      color: var(--primaria);
+      font-weight: bold;
+    }
+
+    @media (max-width: 780px) {
+      .conteudo { grid-template-columns: 1fr; }
+      .tabuleiro { grid-template-columns: repeat(3, minmax(80px, 100px)); }
+      .quadrado { width: 100%; height: 100px; }
+      .cabecalho h1 { font-size: 32px; }
+    }
+
+    @media (max-width: 420px) {
+      .card { padding: 18px; }
+      .tabuleiro { grid-template-columns: repeat(3, 82px); }
+      .quadrado { height: 82px; font-size: 38px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="pagina">
+    <header class="cabecalho">
+      <span>Programação Front-End</span>
+      <h1>Jogo da Velha</h1>
+      <p>Aplicação com estado, eventos e histórico de jogadas.</p>
+    </header>
+
+    <section class="conteudo">
+      <div class="card">
+        <div id="status" class="status">Próximo jogador: X</div>
+        <div id="tabuleiro" class="tabuleiro"></div>
+
+        <div class="acoes">
+          <button id="novaPartida" class="botao">Nova partida</button>
+        </div>
+      </div>
+
+      <aside class="card lateral">
+        <h2>Placar</h2>
+
+        <div class="placar">
+          <div><span>Jogador X</span><strong id="placarX">0</strong></div>
+          <div><span>Jogador O</span><strong id="placarO">0</strong></div>
+          <div><span>Empates</span><strong id="placarEmpates">0</strong></div>
+        </div>
+
+        <button id="zerarPlacar" class="botao secundario">Zerar placar</button>
+
+        <h2 class="titulo-historico">Histórico</h2>
+        <ol id="historico" class="historico"></ol>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    const estado = {
+      historico: [Array(9).fill("")],
+      jogadaAtual: 0,
+      placar: { X: 0, O: 0, empates: 0 },
+      partidaFinalizada: false
+    };
+
+    const combinacoes = [
+      [0,1,2], [3,4,5], [6,7,8],
+      [0,3,6], [1,4,7], [2,5,8],
+      [0,4,8], [2,4,6]
+    ];
+
+    function casasAtuais() {
+      return estado.historico[estado.jogadaAtual];
+    }
+
+    function calcularVencedor(casas) {
+      for (const [a,b,c] of combinacoes) {
+        if (casas[a] && casas[a] === casas[b] && casas[a] === casas[c]) {
+          return { jogador: casas[a], casas: [a,b,c] };
+        }
+      }
+      return null;
+    }
+
+    function jogar(indice) {
+      const casas = casasAtuais();
+      const vencedorAtual = calcularVencedor(casas);
+
+      if (casas[indice] || vencedorAtual) return;
+
+      const jogador = estado.jogadaAtual % 2 === 0 ? "X" : "O";
+      const novasCasas = casas.slice();
+      novasCasas[indice] = jogador;
+
+      estado.historico = [
+        ...estado.historico.slice(0, estado.jogadaAtual + 1),
+        novasCasas
+      ];
+      estado.jogadaAtual++;
+
+      const vencedor = calcularVencedor(novasCasas);
+      const empate = !vencedor && novasCasas.every(Boolean);
+
+      if (!estado.partidaFinalizada && vencedor) {
+        estado.placar[vencedor.jogador]++;
+        estado.partidaFinalizada = true;
+      } else if (!estado.partidaFinalizada && empate) {
+        estado.placar.empates++;
+        estado.partidaFinalizada = true;
+      }
+
+      renderizar();
+    }
+
+    function renderizarTabuleiro() {
+      const tabuleiro = document.getElementById("tabuleiro");
+      const casas = casasAtuais();
+      const vencedor = calcularVencedor(casas);
+      const vencedoras = vencedor ? vencedor.casas : [];
+
+      tabuleiro.innerHTML = "";
+
+      casas.forEach((valor, indice) => {
+        const botao = document.createElement("button");
+        botao.className = "quadrado";
+        botao.textContent = valor;
+
+        if (valor) botao.classList.add(valor.toLowerCase());
+        if (vencedoras.includes(indice)) botao.classList.add("vencedor");
+
+        botao.addEventListener("click", () => jogar(indice));
+        tabuleiro.appendChild(botao);
+      });
+    }
+
+    function renderizarStatus() {
+      const casas = casasAtuais();
+      const vencedor = calcularVencedor(casas);
+      const empate = !vencedor && casas.every(Boolean);
+      const status = document.getElementById("status");
+
+      if (vencedor) {
+        status.textContent = `Vencedor: ${vencedor.jogador}`;
+      } else if (empate) {
+        status.textContent = "Empate";
+      } else {
+        status.textContent =
+          `Próximo jogador: ${estado.jogadaAtual % 2 === 0 ? "X" : "O"}`;
+      }
+    }
+
+    function renderizarPlacar() {
+      document.getElementById("placarX").textContent = estado.placar.X;
+      document.getElementById("placarO").textContent = estado.placar.O;
+      document.getElementById("placarEmpates").textContent = estado.placar.empates;
+    }
+
+    function renderizarHistorico() {
+      const lista = document.getElementById("historico");
+      lista.innerHTML = "";
+
+      estado.historico.forEach((_, indice) => {
+        const item = document.createElement("li");
+        const botao = document.createElement("button");
+
+        botao.textContent = indice === 0
+          ? "Ir para o início"
+          : `Voltar para a jogada ${indice}`;
+
+        if (indice === estado.jogadaAtual) {
+          botao.classList.add("atual");
+        }
+
+        botao.addEventListener("click", () => {
+          estado.jogadaAtual = indice;
+          renderizar();
+        });
+
+        item.appendChild(botao);
+        lista.appendChild(item);
+      });
+    }
+
+    function renderizar() {
+      renderizarTabuleiro();
+      renderizarStatus();
+      renderizarPlacar();
+      renderizarHistorico();
+    }
+
+    document.getElementById("novaPartida").addEventListener("click", () => {
+      estado.historico = [Array(9).fill("")];
+      estado.jogadaAtual = 0;
+      estado.partidaFinalizada = false;
+      renderizar();
+    });
+
+    document.getElementById("zerarPlacar").addEventListener("click", () => {
+      estado.placar = { X: 0, O: 0, empates: 0 };
+      estado.historico = [Array(9).fill("")];
+      estado.jogadaAtual = 0;
+      estado.partidaFinalizada = false;
+      renderizar();
+    });
+
+    renderizar();
+  </script>
+</body>
+</html>
