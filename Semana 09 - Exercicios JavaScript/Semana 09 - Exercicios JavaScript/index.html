@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semana 09 - Exercícios JavaScript</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topo">
+    <div>
+      <span class="etiqueta">Programação Front-End</span>
+      <h1>Semana 09</h1>
+      <p>Exercícios de lógica e manipulação do DOM com JavaScript.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="menu">
+      <a href="#cpf">CPF</a>
+      <a href="#temperatura">Temperatura</a>
+      <a href="#media">Média</a>
+      <a href="#cartao">Taxas</a>
+      <a href="#convidados">Convidados</a>
+      <a href="#eventos">Eventos</a>
+      <a href="#luhn">Luhn</a>
+    </nav>
+
+    <section class="card" id="cpf">
+      <div class="numero">01</div>
+      <h2>Validador de CPF</h2>
+      <div class="form-grid">
+        <label>
+          CPF
+          <input id="cpfInput" type="text" maxlength="14" placeholder="000.000.000-00">
+        </label>
+        <button id="validarCpf">Validar CPF</button>
+      </div>
+      <div id="resultadoCpf" class="resultado neutro">Informe um CPF para validação.</div>
+    </section>
+
+    <section class="card" id="temperatura">
+      <div class="numero">02</div>
+      <h2>Conversor Dinâmico de Temperatura</h2>
+      <div class="duas-colunas">
+        <label>
+          Celsius (°C)
+          <input id="celsius" type="number" step="0.1" placeholder="0">
+        </label>
+        <label>
+          Fahrenheit (°F)
+          <input id="fahrenheit" type="number" step="0.1" placeholder="32">
+        </label>
+      </div>
+      <div class="resultado neutro">Os campos são atualizados automaticamente.</div>
+    </section>
+
+    <section class="card" id="media">
+      <div class="numero">03</div>
+      <h2>Média Escolar</h2>
+      <div class="form-grid">
+        <label>Aluno<input id="nomeAluno" type="text" placeholder="Nome do aluno"></label>
+        <label>Nota 1<input id="nota1" type="number" min="0" max="10" step="0.1"></label>
+        <label>Nota 2<input id="nota2" type="number" min="0" max="10" step="0.1"></label>
+        <label>Nota 3<input id="nota3" type="number" min="0" max="10" step="0.1"></label>
+        <button id="calcularMedia">Calcular média</button>
+      </div>
+      <div id="resultadoMedia" class="resultado neutro">Preencha os dados do aluno.</div>
+    </section>
+
+    <section class="card" id="cartao">
+      <div class="numero">04</div>
+      <h2>Simulador de Taxas Infinity Bank</h2>
+      <div class="form-grid">
+        <label>
+          Bandeira
+          <select id="bandeira">
+            <option value="visa">Visa - 2%</option>
+            <option value="master">Mastercard - 1,85%</option>
+            <option value="elo">Elo - 3%</option>
+          </select>
+        </label>
+        <label>Valor da venda<input id="valorVenda" type="number" min="0" step="0.01"></label>
+        <label>Parcelas<input id="parcelas" type="number" min="1" max="24" value="1"></label>
+        <button id="calcularTaxas">Calcular venda</button>
+      </div>
+      <div id="resultadoTaxas" class="resultado neutro">Informe os dados da venda.</div>
+    </section>
+
+    <section class="card" id="convidados">
+      <div class="numero">05</div>
+      <h2>Lista de Convidados VIP</h2>
+      <div class="linha">
+        <input id="nomeConvidado" type="text" placeholder="Nome do convidado">
+        <button id="adicionarConvidado">Adicionar</button>
+      </div>
+      <ul id="listaConvidados" class="lista"></ul>
+      <div id="contadorConvidados" class="resultado neutro">Nenhum convidado cadastrado.</div>
+    </section>
+
+    <section class="card" id="eventos">
+      <div class="numero">06</div>
+      <h2>Crédito para Festas e Eventos</h2>
+      <div class="form-grid">
+        <label>
+          Pacote
+          <select id="pacote">
+            <option value="50">Standard - R$ 50,00</option>
+            <option value="80">Premium - R$ 80,00</option>
+            <option value="120">Infinity Deluxe - R$ 120,00</option>
+          </select>
+        </label>
+        <label>Quantidade de pessoas<input id="quantidadePessoas" type="number" min="1"></label>
+        <button id="calcularEvento">Calcular orçamento</button>
+      </div>
+      <div id="resultadoEvento" class="resultado neutro">Escolha o pacote e informe a quantidade.</div>
+    </section>
+
+    <section class="card" id="luhn">
+      <div class="numero">07</div>
+      <h2>Validador de Cartão - Algoritmo de Luhn</h2>
+      <div class="form-grid">
+        <label>
+          Número do cartão
+          <input id="numeroCartao" type="text" maxlength="19" placeholder="0000 0000 0000 0000">
+        </label>
+        <button id="analisarCartao">Analisar cartão</button>
+      </div>
+      <div id="resultadoCartao" class="resultado neutro">Digite entre 13 e 16 dígitos.</div>
+    </section>
+  </main>
+
+  <footer>
+    Semana 09 - Programação Front-End
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
